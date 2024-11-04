@@ -1,0 +1,145 @@
+@font-face {
+  font-family: "PP_Neue_Machina";
+  src: url("../PPNeueMachina-InktrapMedium.ttf");
+}
+@font-face {
+  font-family: "satoshi";
+  src: url("../659dbdfd5a080be8d3483173_Satoshi-Variable.ttf");
+}
+
+.landingPageContainer {
+  width: 100vw;
+  height: 100vh;
+  background: url("https://images.unsplash.com/photo-1507120410856-1f35574c3b45?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-size: cover;
+  color: white;
+  font-family: Helvetica;
+}
+
+.landingPageContainer nav {
+  padding: 1.8rem 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.landingPageContainer nav h2 {
+  font-size: 2.5rem;
+  font-weight: 500;
+  background: linear-gradient(to right, rgb(234, 78, 104), rgb(255, 195, 224));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: PP_Neue_Machina;
+}
+
+.navList {
+  display: flex;
+  gap: 3rem;
+  cursor: pointer;
+  font-family: satoshi;
+}
+
+.navList p:hover {
+  /* text-decoration-line: underline; */
+}
+
+.gradient-text {
+  font-size: 2rem;
+  background: linear-gradient(to right, rgb(234, 78, 104), rgb(255, 195, 224));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.landingMainContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 4rem;
+  height: 70vh;
+}
+.landingMainContainer p {
+  font-size: 1rem;
+  margin: 1rem;
+}
+.portrait-image {
+  width: 70%;
+  height: 50vh;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-right: 1.6rem;
+  position: absolute;
+}
+.image-div {
+  margin-top: 5rem;
+  position: relative;
+}
+.para {
+  font-family: satoshi;
+}
+
+.img1 {
+  transform: rotate(-10deg);
+  z-index: 1;
+}
+.img2 {
+  right: -15rem;
+  transform: rotate(12deg);
+  z-index: 2;
+}
+
+.signup-div {
+  align-self: center;
+  background: linear-gradient(to right, rgb(227, 9, 100), white);
+  border-radius: 0.5rem;
+  padding: 1rem 2rem;
+  position: relative;
+  right: 5rem;
+  top: 2rem;
+  cursor: pointer;
+}
+
+.signup-div a {
+  color: black;
+  text-decoration: none;
+  font-family: satoshi;
+  font-weight: 600;
+}
+
+.unqFont {
+  font-family: PP_Neue_Machina;
+}
+.with {
+  font-size: 1.3rem;
+}
+.navbar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 20px;
+}
+
+.meetContainer{
+  display: flex;
+  padding-inline: 20px;
+  height: 80vh;
+  gap: 10vw;
+  justify-content: center;
+}
+
+.leftPanel{
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.rightPanel{
+  display: flex;
+  align-items: center;
+}
+.rightPanel img{
+  width: 30vw;
+  height: auto;
+  border-radius: 20px;
+}
+
+.history{
+  margin-right: 20px;
+}
