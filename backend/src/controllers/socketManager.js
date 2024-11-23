@@ -38,6 +38,7 @@ export const connectToSocket = (server) => {
         //   );
         // }
 
+        //notifying each user in the room that new user is joined
         connections[path].forEach(id => {
           io.to(id).emit("user-joined", socket.id, connections[path])
         });
@@ -69,7 +70,7 @@ export const connectToSocket = (server) => {
     socket.on("signal", (toId, message) => {
       io.to(toId).emit("signal", socket.id, message);
     });
-    // Handles peer-to-peer signaling by passing message (offer/answer) to a specific user (toId)
+    // Handles peer-to-peer signaling by passing message (offer/answer) or ice candidates to a specific peers(toId)
 
 
 
@@ -85,6 +86,7 @@ export const connectToSocket = (server) => {
       //       break;
       //   }
       // }
+
       const [matchingRoom, found] = Object.entries(connections).reduce(
         ([room, isFound], [roomKey, roomValue]) => {
           if (!isFound && roomValue.includes(socket.id)) {
@@ -113,6 +115,7 @@ export const connectToSocket = (server) => {
         console.log(`Message from room: ${matchingRoom}, sender: ${sender}, data: ${data}`);
 
 
+        //we are sending the messages to all connected people
         connections[matchingRoom].forEach((elem) => {
           io.to(elem).emit("chat-message", data, sender, socket.id);
         });

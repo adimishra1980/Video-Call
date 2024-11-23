@@ -1,11 +1,13 @@
 import { Router } from "express";
-import { addToHistory, getUserHistory, login, register, verifyToken } from "../controllers/user.controller.js";
+import { addToHistory, getUserHistory, login, logout, register, verifyToken } from "../controllers/user.controller.js";
 
 const router = Router();
 
 router.route("/login").post(login);
 
 router.route("/register").post(register);
+
+router.route("/logout").post(logout);
 
 router.route("/verifyToken").post(verifyToken);
 

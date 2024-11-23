@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import httpStatus from "http-status";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 export const AuthContext = createContext({});
 
@@ -45,7 +46,6 @@ export const AuthProvider = ({ children }) => {
       if(request.status === httpStatus.OK){
         const {message, success} = request.data;
         if(success){
-          console.log("Login successful:", message);
           setTimeout(() => {
             navigate("/home")
           }, 1000)
@@ -63,28 +63,29 @@ export const AuthProvider = ({ children }) => {
 
   const getUserHistory = async () => {
     try {
-      let request = await client.get("/get_all_activity", {
-        params: {
-          token: localStorage.getItem("token"),
-        },
-      });
-      return request.data;
-    } catch (err) {
-      throw err;
+        let request = await client.get("/get_all_activity", {
+            params: {
+                token: localStorage.getItem("token")
+            }
+        });
+        return request.data
+    } catch
+     (err) {
+        throw err;
     }
-  };
+}
 
-  const addToHistory = async (meetingCode) => {
+const addToHistory = async (meetingCode) => {
     try {
-      let request = await client.post("/add_to_activity", {
-        token: localStorage.getItem("token"),
-        meeting_code: meetingCode,
-      });
-      return request;
+        let request = await client.post("/add_to_activity", {
+            token: localStorage.getItem("token"),
+            meeting_code: meetingCode
+        });
+        return request
     } catch (e) {
-      throw e;
+        throw e;
     }
-  };
+}
 
   const data = {
     userData,

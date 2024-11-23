@@ -21,13 +21,6 @@ const register = asyncHandler( async (req, res, next) => {
 
 
     const newUser = new User({ name, username, password });
-
-    // const token = createSecretToken(newUser._id);
-    // res.cookie("token", token, {
-    //   withCredentials: true,
-    //   httpOnly: false,
-    // });
-
     await newUser.save();
 
     return res
@@ -59,9 +52,10 @@ const login = asyncHandler(async (req, res) => {
     }
 
     const token = createSecretToken(user._id);
+
     res.cookie("token", token, {
       withCredentials: true,
-      httpOnly: false,
+      httpOnly: true,
     });
 
     return res
@@ -72,9 +66,17 @@ const login = asyncHandler(async (req, res) => {
   }
 });
 
+const logout = asyncHandler(async(req, res) => {
+  res.cookie("token", "", {
+    httpOnly: true,
+    expires: new Date(0),
+  })
+  res.status(200).json({message: "Logged out successfully"});
+})
+
 //token validation 
 const verifyToken = asyncHandler(async(req, res) => { 
-  const token = req.cookie.token;
+  const token = req.cookies.token;
   
   if(!token){
     return res.status(401).json({valid: false, message: "No token provided"})
@@ -87,6 +89,14 @@ const verifyToken = asyncHandler(async(req, res) => {
       return res.status(401).json({ valid: false, message: 'Invalid or expired token' });
     }
 
+    // const user = await User.findById(decodedToken.id).select("-password");
+    // if(!user){
+    //   return res.status(401).json({message: "User not found"})
+    // }
+
+    // req.user = user;
+    // // console.log(req.user);
+
     return res.status(200).json({ valid: true, message: 'Token is valid', decodedToken });
 
   } catch (error) {
@@ -98,30 +108,31 @@ const getUserHistory = async (req, res) => {
   const { token } = req.query;
 
   try {
-    const user = await User.findOne({ token: token });
-    const meetings = await Meeting.find({ user_id: user.username });
-    res.json(meetings);
+      const user = await User.findOne({ token: token });
+      const meetings = await Meeting.find({ user_id: user.username })
+      res.json(meetings)
   } catch (e) {
-    res.json({ message: `Something went wrong: ${e}` });
+      res.json({ message: `Something went wrong ${e}` })
   }
-};
+}
 
 const addToHistory = async (req, res) => {
   const { token, meeting_code } = req.body;
 
   try {
-    const user = await User.findOne({ token: token });
+      const user = await User.findOne({ token: token });
 
-    const newMeeting = new Meeting({
-      user_id: user.username,
-      meetingCode: meeting_code,
-    });
+      const newMeeting = new Meeting({
+          user_id: user.username,
+          meetingCode: meeting_code
+      })
 
-    await newMeeting.save();
-    res.status(httpStatus.CREATED).json({ message: "Added code to history!" });
+      await newMeeting.save();
+
+      res.status(httpStatus.CREATED).json({ message: "Added code to history" })
   } catch (e) {
-    res.json({ message: `Something went wrong: ${e}` });
+      res.json({ message: `Something went wrong ${e}` })
   }
-};
+}
 
-export { register, login, getUserHistory, addToHistory, verifyToken };
+export { register, login, getUserHistory, addToHistory, verifyToken, logout };

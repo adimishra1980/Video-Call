@@ -8,6 +8,7 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import HomeIcon from "@mui/icons-material/Home";
+import {nanoid} from "nanoid"
 
 import { IconButton } from "@mui/material";
 export default function History() {
@@ -52,7 +53,7 @@ export default function History() {
         meetings.map((e, i) => {
           return (
             <>
-              <Card key={i} variant="outlined">
+              <Card key={() => nanoid} variant="outlined">
                 <CardContent>
                   <Typography
                     sx={{ fontSize: 14 }}
@@ -60,6 +61,7 @@ export default function History() {
                     gutterBottom
                   >
                     Code: {e.meetingCode}
+                    user
                   </Typography>
 
                   <Typography sx={{ mb: 1.5 }} color="text.secondary">

@@ -33,7 +33,7 @@ app.use(express.urlencoded({ limit: "40kb", extended: true }));
 app.use("/api/v1/users", userRoutes);
 
 app.get("/", (req, res) => {
-  return res.send("hello to my new world!!");
+  return res.send("hemlo domstom kaimse homm!!");
 });
 
 app.get('/api/check-token', (req, res) => {

@@ -7,6 +7,17 @@
   src: url("../659dbdfd5a080be8d3483173_Satoshi-Variable.ttf");
 }
 
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body{
+  height: 100%;
+  width: 100%;
+}
+
 .landingPageContainer {
   width: 100vw;
   height: 100vh;
@@ -143,3 +154,206 @@
 .history{
   margin-right: 20px;
 }
+
+/* videoMeet component styles */
+
+
+*{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 0;
+}
+
+.meetVideoContainer {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  background: #000000e5;
+}
+
+.meetUserVideo {
+  position: absolute;
+  bottom: 9vh;
+  height: 25vh;
+  left: 1rem;
+  border-radius: 20px;
+}
+
+.buttonContainers {
+  position: absolute;
+  width: 100vw;
+  bottom: 0;
+  text-align: center;
+}
+
+.buttonContainers svg {
+  font-size: 3rem;
+}
+
+/* .conferenceView > video {
+  width: 40vw;
+  height: 20vh;
+  min-width: 30vw;
+  border-radius: 20px;
+} */
+
+.conferenceView{
+  min-height: 80%;
+  width: 76%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 10px;
+  gap: 10px;
+}
+
+.video{
+  height: 40vh;
+  min-height: 30vh;
+  border-radius: 20px;
+}
+
+/* starting of new css of chat*/
+
+.chatRoom {
+  height: 90vh;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  background: #ffffff;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  width: 22vw;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.chatContainer {
+  background-color: #f1f1f1;
+  border-radius: 10px;
+  padding: 15px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.chattingArea {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  gap: 10px;
+}
+.chattingArea input[type="text"] {
+  border: none;
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #ffffff;
+  font-size: large;
+  outline: none;
+  box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.chattingDisplay {
+  flex-grow: 1;
+  min-height: 85%;
+  overflow-y: auto;
+  overflow-x: hidden; /* Remove horizontal scrollbars */
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.1);
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.chattingDisplay div {
+  margin-bottom: 15px;
+  background-color: #e0e0e0;
+  padding: 10px;
+  border-radius: 8px;
+  word-break: break-word;
+}
+
+.custom-textfield {
+  font-size: large;
+  padding: 10px;
+  height: 3.5rem;
+  width: 17rem;
+  border: 1px solid rgba(0, 0, 0, 0.244);
+  border-radius: 5px;
+  background-color: #ffffff;
+  outline: none;
+  box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.custom-button {
+  cursor: pointer;
+  height: 3.1rem;
+  width: 4rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.2s ease;
+}
+
+.custom-button:hover {
+  background-color: #0056b3;
+}
+
+.chattingDisplay p {
+  margin: 0;
+}
+
+.chattingDisplay::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chattingDisplay::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+
+.chattingDisplay::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}
+
+
+/* lobby css */
+.lobby{
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  height: 100vh;
+}
+
+.lobbyContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12vh;
+}
+
+.lobbyVideo{
+  border-radius: 30px;
+}
+
+.lobbyHeading{
+  margin-bottom: 10px;
+}
+
+.details{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+
